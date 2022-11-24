@@ -47,26 +47,34 @@ jobs:
           python3 opencv-${OCV_VER}/platforms/apple/build_xcframework.py \
                   --framework_name opencv2 \
                   --out ./opencv-build \
-                  --contrib opencv_contrib-${OCV_VER} \
                   --iphoneos_archs arm64 \
                   --iphonesimulator_archs x86_64,arm64 \
                   --build_only_specified_archs \
-                  --without objc \
-                  --without alphamat \
-                  --without cvv \
+                  --without calib3d \
+                  --without dnn \
+                  --without features2d \
+                  --without flann \
+                  --without gapi \
+                  --without highgui \
+                  --without imgcodecs \
                   --without java \
-                  --without julia \
-                  --without matlab \
-                  --without ovis \
-                  --without python2 \
-                  --without python3 \
-                  --without datasets
+                  --without js \
+                  --without ml \
+                  --without objc \
+                  --without objdetect \
+                  --without photo \
+                  --without python \
+                  --without stitching \
+                  --without ts \
+                  --without video \
+                  --without videoio \
+                  --without world
       - name: Zip xcframework
         run: |
           cd ./opencv-build 
-          zip -r opencv-${OCV_VER}-ios.zip opencv2.xcframework
+          zip -r opencv-ios-${OCV_VER}.zip opencv2.xcframework
           ls -l
-          du -sh opencv-${OCV_VER}-ios.zip
+          du -sh opencv-ios-${OCV_VER}.zip
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
