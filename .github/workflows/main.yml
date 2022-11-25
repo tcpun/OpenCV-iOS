@@ -47,7 +47,6 @@ jobs:
           python3 opencv-${OCV_VER}/platforms/apple/build_xcframework.py \
                   --framework_name opencv2 \
                   --out ./opencv-build \
-                  --iphoneos_archs arm64 \
                   --iphonesimulator_archs x86_64,arm64 \
                   --build_only_specified_archs \
                   --without calib3d \
